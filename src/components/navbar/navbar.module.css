@@ -20,16 +20,3 @@
     color: #52c48b;
   }
   
-  .logout {
-    padding: 0.6rem;
-    border: none;
-    background-color: #53c28b;
-    color: white;
-    cursor: pointer;
-    border-radius: 3px;
-    font-size: 0.9rem;
-    
-  }
-  .logout:hover{
-    background-color: #5dc993;
-  }

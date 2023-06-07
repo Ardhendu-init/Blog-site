@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import styles from "./navbar.module.css";
+import Button from "../button/Button";
 
 const links = [
   {
@@ -47,7 +48,7 @@ const Navbar = () => {
           </Link>
         ))}
       </div>
-      <button className={styles.logout}>Logout</button>
+      <Button title="Logout" url="/" />
     </div>
   );
 };

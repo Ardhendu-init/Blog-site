@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
+import Button from "@/src/components/button/Button";
 
 const About: React.FC = () => {
   return (
@@ -52,6 +53,7 @@ const About: React.FC = () => {
             <br />
             <br /> - Mobile Apps
           </p>
+          <Button url="/" title="Contact" />
         </div>
       </div>
     </div>
