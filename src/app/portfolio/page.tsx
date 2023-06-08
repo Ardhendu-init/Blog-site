@@ -16,7 +16,7 @@ const galleryContent = [
   {
     id: 3,
     name: "Application",
-    link: "/portfolio/application",
+    link: "/portfolio/applications",
   },
 ];
 

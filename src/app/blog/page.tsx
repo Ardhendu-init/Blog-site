@@ -3,69 +3,44 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-const Blog = () => {
+const getData = async () => {
+  const res = await fetch("http://localhost:3000/api/posts", {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+};
+
+const Blog = async () => {
+  const data = await getData();
+
   return (
     <div className={styles.mainContainer}>
-      <Link href="/blog/id" className={styles.container}>
-        <div className={styles.imageContainer}>
-          <Image
-            src="https://images.pexels.com/photos/2103127/pexels-photo-2103127.jpeg"
-            alt=""
-            width={400}
-            height={250}
-            className={styles.image}
-          />
-        </div>
-        <div className={styles.content}>
-          <h1 className={styles.title}>Title</h1>
-          <p className={styles.desc}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-            nam sit deleniti praesentium quae, vel error impedit, atque est
-            cupiditate alias! Corporis deserunt inventore aperiam quasi eveniet
-            accusamus aliquam pariatur?
-          </p>
-        </div>
-      </Link>
-      <Link href="/blog/id" className={styles.container}>
-        <div className={styles.imageContainer}>
-          <Image
-            src="https://images.pexels.com/photos/2103127/pexels-photo-2103127.jpeg"
-            alt=""
-            width={400}
-            height={250}
-            className={styles.image}
-          />
-        </div>
-        <div className={styles.content}>
-          <h1 className={styles.title}>Title</h1>
-          <p className={styles.desc}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-            nam sit deleniti praesentium quae, vel error impedit, atque est
-            cupiditate alias! Corporis deserunt inventore aperiam quasi eveniet
-            accusamus aliquam pariatur?
-          </p>
-        </div>
-      </Link>
-      <Link href="/blog/id" className={styles.container}>
-        <div className={styles.imageContainer}>
-          <Image
-            src="https://images.pexels.com/photos/2103127/pexels-photo-2103127.jpeg"
-            alt=""
-            width={400}
-            height={250}
-            className={styles.image}
-          />
-        </div>
-        <div className={styles.content}>
-          <h1 className={styles.title}>Title</h1>
-          <p className={styles.desc}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-            nam sit deleniti praesentium quae, vel error impedit, atque est
-            cupiditate alias! Corporis deserunt inventore aperiam quasi eveniet
-            accusamus aliquam pariatur?
-          </p>
-        </div>
-      </Link>
+      {data.map((item: any) => (
+        <Link
+          key={item._id}
+          href={`/blog/${item._id}`}
+          className={styles.container}
+        >
+          <div className={styles.imageContainer}>
+            <Image
+              src={item.img}
+              alt=""
+              width={400}
+              height={250}
+              className={styles.image}
+            />
+          </div>
+          <div className={styles.content}>
+            <h1 className={styles.title}>{item.title}</h1>
+            <p className={styles.desc}>{item.desc}</p>
+          </div>
+        </Link>
+      ))}
     </div>
   );
 };
