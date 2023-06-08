@@ -11,6 +11,18 @@ background-color: #111;
 color:#bbb ;
 }
 
+.light {
+  background-color:white;
+color:#111 ;
+}
+.dark{
+  background-color: #111;
+color:#bbb ;
+}
+.theme{
+  transition: all 1s ease;
+}
+
 a{
   text-decoration: none;
   color: inherit;
